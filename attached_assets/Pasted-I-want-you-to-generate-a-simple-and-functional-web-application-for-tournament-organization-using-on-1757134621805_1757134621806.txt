@@ -1,0 +1,45 @@
+I want you to generate a simple and functional web application for tournament organization, using only JavaScript, HTML, and CSS (no frameworks).
+
+General Requirements:
+  - The application must be connected to a database (it can be simulated with JSON or a local file for the prototype).
+  - It must include a login and user registration system.
+  - Administrators can perform CRUD (Create, Read, Update, Delete) operations for Tournaments, Teams, Players, and Matches.
+  - Non-registered users can browse and view public tournament information.
+
+Main Features:
+  1. User Login / Registration
+     - Basic validation of username and password.
+     - Roles: administrator / regular user.
+
+  2. Tournament Management (CRUD for admins only)
+     - Create, edit, and delete tournaments.
+     - Each tournament must store: name, description/rules, dates, format (e.g., knockout, league).
+
+  3. Teams and Players Management (CRUD for admins only)
+     - Add and edit teams with name, optional logo, and player list.
+     - Add players with name, age, optional position.
+
+  4. Match Management (CRUD for admins only)
+     - Schedule matches within a tournament.
+     - Store date, time, participating teams, and results.
+
+  5. Main Interface (accessible to all)
+     - Display details of a selected tournament:
+       - Basic information (name, rules, dates, format).
+       - List of registered teams and/or players.
+       - Fixture/bracket or standings table (simple list or table is fine).
+     - Display results of played matches.
+     - Display updated standings or bracket.
+
+  6. Additional Database Functions
+     - Allow team/player registration to tournaments.
+     - Automatic or manual generation of fixtures.
+     - Result recording by administrators.
+     - Automatic calculation of standings or bracket progression.
+     - Tournament history with basic statistics.
+
+Technical Requirements:
+  - Use HTML + CSS for the interface.
+  - Use JavaScript for application logic.
+  - Use JSON as a simulated database for storing users, tournaments, teams, players, and matches.
+  - Write modular, well-structured, and commented code to make it easy to understand and extend.

@@ -1,4 +1,4 @@
-# 🏆 Tournament Manager - Sistema de Gestión de Torneos
+# 🏆 Sistema de Gestión de Torneos
 
 Un sistema completo y moderno para la gestión y organización de torneos deportivos, desarrollado con tecnologías web estándar.
 

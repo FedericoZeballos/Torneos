@@ -1,132 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tournament Manager</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sistema de gestión de torneos - Organiza y administra torneos deportivos de manera profesional"
+    />
+    <meta
+      name="keywords"
+      content="torneos, deportes, gestión, equipos, jugadores, fixtures, resultados"
+    />
+    <meta name="author" content="Tournament Manager System" />
+
+    <title>Tournament Manager - Sistema de Gestión de Torneos</title>
+
+    <!-- Preconnect to external font services -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter font family for modern typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>"
+    />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div id="app">
-        <!-- Header -->
-        <header class="header">
-            <div class="container">
-                <h1 class="logo">Tournament Manager</h1>
-                <nav class="nav">
-                    <button id="loginBtn" class="nav-btn">Login</button>
-                    <button id="registerBtn" class="nav-btn">Register</button>
-                    <button id="logoutBtn" class="nav-btn hidden">Logout</button>
-                    <span id="userInfo" class="user-info hidden"></span>
-                </nav>
+      <!-- Header -->
+      <header class="header">
+        <div class="container">
+          <h1 class="logo">Administrador de Torneos</h1>
+          <nav class="nav">
+            <button id="loginBtn" class="nav-btn">🔐 Iniciar Sesión</button>
+            <button id="registerBtn" class="nav-btn">📝 Registrarse</button>
+            <button id="logoutBtn" class="nav-btn hidden">
+              🚪 Cerrar Sesión
+            </button>
+            <span id="userInfo" class="user-info hidden"></span>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main">
+        <div class="container">
+          <!-- Login Modal -->
+          <div id="loginModal" class="modal hidden">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>🔐 Iniciar Sesión</h2>
+              <form id="loginForm">
+                <div class="form-group">
+                  <label for="loginUsername">Usuario:</label>
+                  <input
+                    type="text"
+                    id="loginUsername"
+                    required
+                    placeholder="Ingresá tu nombre de usuario"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="loginPassword">Contraseña:</label>
+                  <input
+                    type="password"
+                    id="loginPassword"
+                    required
+                    placeholder="Ingresá tu contraseña"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  🔓 Ingresar
+                </button>
+              </form>
             </div>
-        </header>
+          </div>
 
-        <!-- Main Content -->
-        <main class="main">
-            <div class="container">
-                <!-- Login Modal -->
-                <div id="loginModal" class="modal hidden">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Login</h2>
-                        <form id="loginForm">
-                            <div class="form-group">
-                                <label for="loginUsername">Username:</label>
-                                <input type="text" id="loginUsername" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="loginPassword">Password:</label>
-                                <input type="password" id="loginPassword" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
-                        </form>
-                    </div>
+          <!-- Register Modal -->
+          <div id="registerModal" class="modal hidden">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>📝 Registrarse</h2>
+              <form id="registerForm">
+                <div class="form-group">
+                  <label for="registerUsername">Nombre de Usuario:</label>
+                  <input
+                    type="text"
+                    id="registerUsername"
+                    required
+                    placeholder="Elegí un nombre de usuario"
+                  />
                 </div>
-
-                <!-- Register Modal -->
-                <div id="registerModal" class="modal hidden">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Register</h2>
-                        <form id="registerForm">
-                            <div class="form-group">
-                                <label for="registerUsername">Username:</label>
-                                <input type="text" id="registerUsername" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="registerPassword">Password:</label>
-                                <input type="password" id="registerPassword" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="registerConfirmPassword">Confirm Password:</label>
-                                <input type="password" id="registerConfirmPassword" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="registerRole">Role:</label>
-                                <select id="registerRole">
-                                    <option value="user">Regular User</option>
-                                    <option value="admin">Administrator</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </form>
-                    </div>
+                <div class="form-group">
+                  <label for="registerPassword">Contraseña:</label>
+                  <input
+                    type="password"
+                    id="registerPassword"
+                    required
+                    placeholder="Creá una contraseña segura"
+                  />
                 </div>
-
-                <!-- Dashboard -->
-                <div id="dashboard" class="dashboard">
-                    <!-- Navigation Tabs -->
-                    <div class="tabs">
-                        <button class="tab-btn active" data-tab="tournaments">Tournaments</button>
-                        <button class="tab-btn admin-only hidden" data-tab="teams">Teams</button>
-                        <button class="tab-btn admin-only hidden" data-tab="players">Players</button>
-                        <button class="tab-btn admin-only hidden" data-tab="matches">Matches</button>
-                    </div>
-
-                    <!-- Tab Contents -->
-                    <div id="tournaments" class="tab-content active">
-                        <div class="tab-header">
-                            <h2>Tournaments</h2>
-                            <button id="addTournamentBtn" class="btn btn-primary admin-only hidden">Add Tournament</button>
-                        </div>
-                        <div id="tournamentsList" class="items-list"></div>
-                        <div id="tournamentDetails" class="details-panel hidden"></div>
-                    </div>
-
-                    <div id="teams" class="tab-content">
-                        <div class="tab-header">
-                            <h2>Teams</h2>
-                            <button id="addTeamBtn" class="btn btn-primary admin-only hidden">Add Team</button>
-                        </div>
-                        <div id="teamsList" class="items-list"></div>
-                    </div>
-
-                    <div id="players" class="tab-content">
-                        <div class="tab-header">
-                            <h2>Players</h2>
-                            <button id="addPlayerBtn" class="btn btn-primary admin-only hidden">Add Player</button>
-                        </div>
-                        <div id="playersList" class="items-list"></div>
-                    </div>
-
-                    <div id="matches" class="tab-content">
-                        <div class="tab-header">
-                            <h2>Matches</h2>
-                            <button id="addMatchBtn" class="btn btn-primary admin-only hidden">Add Match</button>
-                        </div>
-                        <div id="matchesList" class="items-list"></div>
-                    </div>
+                <div class="form-group">
+                  <label for="registerConfirmPassword"
+                    >Confirmar Contraseña:</label
+                  >
+                  <input
+                    type="password"
+                    id="registerConfirmPassword"
+                    required
+                    placeholder="Repetí tu contraseña"
+                  />
                 </div>
-
-                <!-- Forms Modal -->
-                <div id="formModal" class="modal hidden">
-                    <div class="modal-content large">
-                        <span class="close">&times;</span>
-                        <div id="formContainer"></div>
-                    </div>
+                <div class="form-group">
+                  <label for="registerRole">Rol:</label>
+                  <select id="registerRole">
+                    <option value="user">Usuario Normal</option>
+                    <option value="admin">Administrador</option>
+                  </select>
                 </div>
+                <button type="submit" class="btn btn-primary">
+                  ✅ Crear Cuenta
+                </button>
+              </form>
             </div>
-        </main>
+          </div>
+
+          <!-- Dashboard -->
+          <div id="dashboard" class="dashboard">
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tournaments">
+                🏆 Torneos
+              </button>
+              <button class="tab-btn admin-only hidden" data-tab="teams">
+                ⚽ Equipos
+              </button>
+              <button class="tab-btn admin-only hidden" data-tab="players">
+                👥 Jugadores
+              </button>
+              <button class="tab-btn admin-only hidden" data-tab="matches">
+                📅 Partidos
+              </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="tournaments" class="tab-content active">
+              <div class="tab-header">
+                <h2>🏆 Torneos</h2>
+                <button
+                  id="addTournamentBtn"
+                  class="btn btn-primary admin-only hidden"
+                >
+                  ➕ Crear Torneo
+                </button>
+              </div>
+              <div id="tournamentsList" class="items-list"></div>
+              <div id="tournamentDetails" class="details-panel hidden"></div>
+            </div>
+
+            <div id="teams" class="tab-content">
+              <div class="tab-header">
+                <h2>⚽ Equipos</h2>
+                <button
+                  id="addTeamBtn"
+                  class="btn btn-primary admin-only hidden"
+                >
+                  ➕ Crear Equipo
+                </button>
+              </div>
+              <div id="teamsList" class="items-list"></div>
+            </div>
+
+            <div id="players" class="tab-content">
+              <div class="tab-header">
+                <h2>👥 Jugadores</h2>
+                <button
+                  id="addPlayerBtn"
+                  class="btn btn-primary admin-only hidden"
+                >
+                  ➕ Agregar Jugador
+                </button>
+              </div>
+              <div id="playersList" class="items-list"></div>
+            </div>
+
+            <div id="matches" class="tab-content">
+              <div class="tab-header">
+                <h2>📅 Partidos</h2>
+                <button
+                  id="addMatchBtn"
+                  class="btn btn-primary admin-only hidden"
+                >
+                  ➕ Programar Partido
+                </button>
+              </div>
+              <div id="matchesList" class="items-list"></div>
+            </div>
+          </div>
+
+          <!-- Forms Modal -->
+          <div id="formModal" class="modal hidden">
+            <div class="modal-content large">
+              <span class="close">&times;</span>
+              <div id="formContainer"></div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script src="data.js"></script>
@@ -136,5 +225,5 @@
     <script src="player.js"></script>
     <script src="match.js"></script>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>

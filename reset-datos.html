@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reiniciar Datos - Tournament Manager</title>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+      }
+      h1 {
+        color: #1e293b;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+      p {
+        color: #64748b;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+      .btn {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        margin: 0.5rem;
+        transition: all 0.15s ease;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      }
+      .btn-secondary {
+        background: #6b7280;
+      }
+      .btn-secondary:hover {
+        background: #4b5563;
+        box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
+      }
+      .success {
+        color: #10b981;
+        font-weight: 600;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🏆 Reiniciar Datos del Sistema</h1>
+      <p>
+        Esta herramienta permite limpiar todos los datos existentes en el
+        sistema y cargar los nuevos datos de ejemplo con equipos argentinos.
+      </p>
+      <p>
+        <strong>⚠️ Atención:</strong> Esta acción eliminará todos los torneos,
+        equipos, jugadores y partidos existentes y los reemplazará con datos de
+        ejemplo de equipos argentinos como Boca, River, Racing, etc.
+      </p>
+
+      <button onclick="reiniciarDatos()" class="btn">
+        🔄 Reiniciar con Datos Argentinos
+      </button>
+
+      <button
+        onclick="window.location.href='index.html'"
+        class="btn btn-secondary"
+      >
+        ⬅️ Volver al Sistema
+      </button>
+
+      <div id="mensaje" class="success" style="display: none">
+        ✅ ¡Datos reiniciados exitosamente! Ahora podés volver al sistema para
+        ver los nuevos datos.
+      </div>
+    </div>
+
+    <script>
+      function reiniciarDatos() {
+        // Limpiar todos los datos existentes
+        const keys = [
+          "tournament_users",
+          "tournament_tournaments",
+          "tournament_teams",
+          "tournament_players",
+          "tournament_matches",
+        ];
+
+        keys.forEach((key) => {
+          localStorage.removeItem(key);
+        });
+
+        // Mostrar mensaje de éxito
+        document.getElementById("mensaje").style.display = "block";
+
+        // Ocultar el botón para evitar clicks múltiples
+        event.target.style.display = "none";
+
+        console.log(
+          "Datos del sistema reiniciados. Los nuevos datos argentinos se cargarán al abrir el sistema."
+        );
+      }
+    </script>
+  </body>
+</html>
